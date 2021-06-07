@@ -5,7 +5,7 @@ let pageIndex = 0;
 let minPageIndex = 0;
 let maxPageIndex = 0;
 
-function previousPage() {
+const previousPage = () => {
 
     if (minPageIndex <= pageIndex - 1) {
         pageIndex--;
@@ -13,7 +13,7 @@ function previousPage() {
 
 }
 
-function nextPage() {
+const nextPage = () => {
 
     if (pageIndex + 1 < maxPageIndex) {
         pageIndex++;
@@ -22,7 +22,7 @@ function nextPage() {
 }
 
 
-async function doRequest() {
+const doRequest = async () => {
 
     resultDiv.textContent = "";
 
@@ -75,7 +75,7 @@ async function doRequest() {
 
 }
 
-async function renderPage(data) {
+const renderPage = async (data) => {
 
     let pageSizeComboBox = document.getElementById("pageSizeId");
     let pageSize = pageSizeComboBox.value;
@@ -159,6 +159,7 @@ async function renderPage(data) {
         let picture = document.createElement("img");
         recipe_img.appendChild(picture);
         picture.src = recipe.image;
+        picture.alt = recipe.title + " picture not given";
 
         ///////////////////////////////////////////////////////
 
@@ -226,7 +227,7 @@ async function renderPage(data) {
 
 
 // list the content of each row
-function displayedRecipes(data, startIndex, pageSize, pageIndex) {
+const displayedRecipes = (data, startIndex, pageSize, pageIndex) => {
 
     rows = [];
     let i = 0;
@@ -244,7 +245,7 @@ function displayedRecipes(data, startIndex, pageSize, pageIndex) {
 }
 
 //get product info from id
-async function getRecipeByID(v_id) {
+const getRecipeByID = async (v_id) => {
     let url = "https://api.spoonacular.com/recipes/" + v_id + "/ingredientWidget.json?apiKey=" + apiKey;
     let responseInfo = await fetch(url);
     let jsonInfo = await responseInfo.json();
@@ -257,7 +258,7 @@ async function getRecipeByID(v_id) {
 }
 
 //search videos for recipe in a new window
-async function getRecipeVideoByTitle(v_title) {
+const getRecipeVideoByTitle = async (v_title) => {
     let url = "https://www.youtube.com/results?search_query=" + encodeURIComponent(v_title);
     window.open(url);
 }
