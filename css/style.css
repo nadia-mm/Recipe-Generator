@@ -13,9 +13,13 @@ body {
  td > img  {
    height: 10%;
  }  
- 
+
  table ,th,td {
   border: 3px solid #7aaec4;
+ }
+ 
+ table{
+  width: 100%;
  }
 
 
