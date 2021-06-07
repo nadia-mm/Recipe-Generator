@@ -10,7 +10,15 @@ body {
     display: flex;
  }
 
-  
+ td > img  {
+   height: 10%;
+ }  
+ 
+ table ,th,td {
+  border: 3px solid #7aaec4;
+ }
+
+
   /*============= TOP BAR HEADER =============*/
   .top-bar{
     background-color: #7aaec4;
