@@ -69,7 +69,7 @@ const doRequest = async () => {
             }
         })
         .catch(err => {
-            resultDiv.textContent = err.message;
+            resultDiv.textContent = err.message === "Cannot read property 'length' of undefined" ? "Your daily points limit of 150 has been reached. Please upgrade your plan to continue using the API.": err.message;
         });
 
 
