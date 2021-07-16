@@ -1,4 +1,4 @@
-let apiKey = "97965df9eb5b466f8f8d70979cb60e5b"; // ADD YOUR API KEY HERE
+let apiKey = process.env.API_KEY;
 let resultDiv = document.getElementById("resultId");
 let paginationDiv = document.getElementById("paginationId");
 let pageIndex = 0;
