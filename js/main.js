@@ -1,10 +1,10 @@
-let apiKey = process.env.API_KEY;
-let resultDiv = document.getElementById("resultId");
-let paginationDiv = document.getElementById("paginationId");
+const { API_KEY } = process.env;
+const resultDiv = document.getElementById("resultId");
+const paginationDiv = document.getElementById("paginationId");
 let pageIndex = 0;
 let minPageIndex = 0;
 let maxPageIndex = 0;
-
+ console.log(process.en)
 const previousPage = () => {
 
     if (minPageIndex <= pageIndex - 1) {
@@ -47,7 +47,7 @@ const doRequest = async () => {
     let maxCalorie = document.getElementById("maxCalorieId").value;
 
     //get data results
-    let baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + apiKey;
+    const baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + API_KEY;
     let response;
     if (minCalorie !== "" && maxCalorie !== "") {
         response = await fetch(baseUrl + "&includeIngredients=" + encodeURIComponent(ingredients.join(",")) + "&diet=" + encodeURIComponent(dietList) + "&minCalories=" + encodeURIComponent(minCalorie) + "&maxCalories=" + encodeURIComponent(maxCalorie));
@@ -246,7 +246,7 @@ const displayedRecipes = (data, startIndex, pageSize, pageIndex) => {
 
 //get product info from id
 const getRecipeByID = async (v_id) => {
-    let url = "https://api.spoonacular.com/recipes/" + v_id + "/ingredientWidget.json?apiKey=" + apiKey;
+    let url = "https://api.spoonacular.com/recipes/" + v_id + "/ingredientWidget.json?API_KEY=" + API_KEY;
     let responseInfo = await fetch(url);
     let jsonInfo = await responseInfo.json();
     let jsonIngredients = jsonInfo.ingredients;
