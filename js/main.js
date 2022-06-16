@@ -4,7 +4,6 @@ const paginationDiv = document.getElementById("paginationId");
 let pageIndex = 0;
 let minPageIndex = 0;
 let maxPageIndex = 0;
- console.log(process.en)
 const previousPage = () => {
 
     if (minPageIndex <= pageIndex - 1) {
