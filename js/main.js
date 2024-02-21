@@ -32,7 +32,6 @@ const doRequest = async () => {
     }
 
 
-    //get diet
     let diets = document.getElementsByName("diet");
     let dietList = "";
     for (let diet of diets) {
@@ -41,11 +40,10 @@ const doRequest = async () => {
         }
     }
 
-    //get min max calories
     let minCalorie = document.getElementById("minCalorieId").value;
     let maxCalorie = document.getElementById("maxCalorieId").value;
 
-    //get data results
+
     const baseUrl = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + API_KEY;
     let response;
     if (minCalorie !== "" && maxCalorie !== "") {
@@ -82,53 +80,40 @@ const renderPage = async (data) => {
     let startIndex = pageIndex * pageSize;
     maxPageIndex = data.length / pageSize;
 
-    // create item list (list the content of each row)
+
     let rows = displayedRecipes(data, startIndex, pageSize, pageIndex);
 
-    //------------------------------------------------------------------------------
 
-    //write the content of the webpage
     resultDiv.innerHTML = "";
 
-    //create table
     let v_table = document.createElement("table");
     resultDiv.appendChild(v_table);
 
-
-    //create tr - header row
     let v_tr = document.createElement("tr");
     v_table.appendChild(v_tr);
 
 
-    //headers
-    //id header
     let id_th = document.createElement("th");
     v_tr.appendChild(id_th);
     id_th.textContent = "id";
 
 
-    //title header
     let title_th = document.createElement("th");
     v_tr.appendChild(title_th);
     title_th.textContent = "Title";
 
-    //Picture header
     let pic_th = document.createElement("th");
     v_tr.appendChild(pic_th);
     pic_th.textContent = "Picture";
 
-    //Info header
     let link_th = document.createElement("th");
     v_tr.appendChild(link_th);
     link_th.textContent = "Info";
 
-    //Video header
     let video_th = document.createElement("th");
     v_tr.appendChild(video_th);
     video_th.textContent = "Video";
 
-    ///////////////////////////////////////////////////////
-    //display data in each column
     for (let index = startIndex; index < startIndex + pageSize; index++) {
         let recipe = data[index];
 
@@ -138,21 +123,16 @@ const renderPage = async (data) => {
 
         let recipe_row = document.createElement("tr");
         v_table.appendChild(recipe_row);
-
-        //add id
         let recipe_id = document.createElement("td");
         recipe_row.appendChild(recipe_id);
         recipe_id.textContent = recipe.id;
 
-        ///////////////////////////////////////////////////////
-        //add title
         let recipe_title = document.createElement("td");
         recipe_row.appendChild(recipe_title);
         recipe_title.textContent = recipe.title;
 
 
-        ///////////////////////////////////////////////////////
-        //add Picture
+
         let recipe_img = document.createElement("td");
         recipe_row.appendChild(recipe_img);
         let picture = document.createElement("img");
@@ -160,12 +140,9 @@ const renderPage = async (data) => {
         picture.src = recipe.image;
         picture.alt = recipe.title + " picture not given";
 
-        ///////////////////////////////////////////////////////
-
-        //add info list
         let recipe_info = document.createElement("td");
         recipe_row.appendChild(recipe_info);
-        //ingredient list
+
         let recipe_ingredList = document.createElement("div");
         recipe_info.appendChild(recipe_ingredList)
         let ingredient_ul = document.createElement("ul");
@@ -179,9 +156,7 @@ const renderPage = async (data) => {
             ingredient_ul.appendChild(ingredient_li);
         }
 
-        ///////////////////////////////////////////////////////
 
-        //add video
         let recipeToWatch = document.createElement("td");
         recipe_row.appendChild(recipeToWatch);
         let buttonVideo = document.createElement("input");
@@ -196,7 +171,7 @@ const renderPage = async (data) => {
 
     paginationDiv.innerHTML = "";
 
-    //Previous button
+
     let prevButton = document.createElement("button");
     prevButton.textContent = "<<";
     prevButton.onclick = () => {
@@ -206,12 +181,11 @@ const renderPage = async (data) => {
     paginationDiv.appendChild(prevButton);
 
 
-    //Page X out of Y
     let currentPage = document.createElement("div");
     currentPage.textContent = "Page " + eval(pageIndex + 1) + " out of " + maxPageIndex;
     paginationDiv.appendChild(currentPage);
 
-    //Next button
+
     let nextButton = document.createElement("button");
     nextButton.textContent = ">>";
     nextButton.onclick = () => {
@@ -225,7 +199,6 @@ const renderPage = async (data) => {
 
 
 
-// list the content of each row
 const displayedRecipes = (data, startIndex, pageSize, pageIndex) => {
 
     rows = [];
@@ -243,7 +216,7 @@ const displayedRecipes = (data, startIndex, pageSize, pageIndex) => {
 
 }
 
-//get product info from id
+
 const getRecipeByID = async (v_id) => {
     let url = "https://api.spoonacular.com/recipes/" + v_id + "/ingredientWidget.json?API_KEY=" + API_KEY;
     let responseInfo = await fetch(url);
@@ -256,7 +229,7 @@ const getRecipeByID = async (v_id) => {
     return ingredientNames;
 }
 
-//search videos for recipe in a new window
+
 const getRecipeVideoByTitle = async (v_title) => {
     let url = "https://www.youtube.com/results?search_query=" + encodeURIComponent(v_title);
     window.open(url);
