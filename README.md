@@ -22,4 +22,4 @@ cd recipe-generator
 
 ## DEMO
 
-![](img\demo.gif)
+![](https://github.com/nadia-mm/Recipe-Generator/blob/main/img/demo.gif)
