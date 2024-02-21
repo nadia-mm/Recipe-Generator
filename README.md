@@ -7,7 +7,19 @@ Please note that the API Key can be used a limit usage (daily points limit of 15
 
 ## INSTRUCTIONS
 
-- `git clone https://github.com/nadia-mm/Recipe-Generator.git`
-- `cd recipe-generator`
+- Please type in a terminal:
+
+```shell
+git clone https://github.com/nadia-mm/Recipe-Generator.git
+```
+
+ ```shell
+cd recipe-generator
+````
+
 - open the file index.html(index.html) in your Chrome web browser
 - Fill in the form and then click on the button "Search"
+
+## DEMO
+
+![](img\demo.gif)
